@@ -1,0 +1,49 @@
+<script language="javascript" runat="server">
+// Author: Cexzur Jimenez Jr.
+// Revision date: March 16, 2023
+
+// SUMMARY
+// This script updates the chosen query and set the target
+// DE to point to the specified auto-suppression list.
+// After this script updated the query, the query must be
+// be run to then update the auto-suppression list.
+
+// USEFUL NOTES
+// No need to run this script again once the specified
+// auto-suppression list is already designated as the
+// target data extension.
+
+Platform.Load('Core', '1');
+
+var prox = new Script.Util.WSProxy();
+
+var queryStr = '';
+    
+    queryStr += 'SELECT T1.Contact_ID AS [Contact ID],';
+    queryStr += '\nT1.Email_Address AS [Email Address],';
+    queryStr += '\nT1.Status AS [Status],';
+    queryStr += '\nT1.Event_Date AS [Event Date],';
+    queryStr += '\nT1.Bounce_Category AS [Bounce Category],';
+    queryStr += '\nT1.Bounce_Subcategory AS [Bounce Subcategory],';
+    queryStr += '\nT1.Bounce_Type AS [Bounce Type],';
+    queryStr += '\nT1.SMTP_Bounce_Reason AS [SMTP Bounce Reason],';
+    queryStr += '\nT1.SMTP_Message AS [SMTP Message],';
+    queryStr += '\nT1.SMTP_Code AS [SMTP Code]';
+    queryStr += '\nFROM Intermediate_Removed_Duplicate_Email_Address_Auto_Suppression_List_DE_PROD T1';
+
+  var queryDef = {
+    CustomerKey: 'AC34538D-9D5A-4407-8089-A7FCBBA843F9',
+    ObjectID: 'ac34538d-9d5a-4407-8089-a7fcbba843f9',
+    QueryText: queryStr,
+    TargetType: 'DE',
+    TargetUpdateType: 'Update',
+    DataExtensionTarget: {
+      CustomerKey: 'B06598F1-22A5-426B-B492-F18662DE9293',
+      Name: 'EMEA_Surgical_Auto_Suppression_List_PROD'
+    }
+  };
+var updateQuery = prox.updateItem('QueryDefinition', queryDef);
+
+Write('result: ' + Stringify(updateQuery))
+
+</script>

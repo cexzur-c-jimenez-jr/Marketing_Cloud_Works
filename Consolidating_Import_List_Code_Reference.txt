@@ -1,0 +1,67 @@
+SELECT T1.Email AS Email,
+       T1.First_Name AS First_Name,
+       T1.Last_Name AS Last_Name
+FROM Costco_Doctor_Import T1
+UNION ALL
+SELECT T2.Email AS Email,
+       NULL AS First_Name,
+       NULL AS Last_Name
+FROM [2H_Readiness_Email_VS_Import] T2
+UNION ALL
+SELECT T3.Email AS Email,
+       NULL AS First_Name,
+       NULL AS Last_Name
+FROM Import_2H_National_List T3
+UNION ALL
+SELECT T4.Email AS Email,
+       NULL AS First_Name,
+       NULL AS Last_Name
+FROM [2H_VSP__2023_Import] T4
+UNION ALL
+SELECT T5.Email AS Email,
+       NULL AS First_Name,
+       NULL AS Last_Name
+FROM Import_2H_IDOC_List T5
+UNION ALL
+SELECT T6.Email AS Email,
+       T6.FirstName AS First_Name,
+       T6.LastName AS Last_Name
+FROM VTM_ImportDE T6
+UNION ALL
+SELECT T7.Email AS Email,
+       T7.First_Name AS First_Name,
+       T7.Last_Name AS Last_Name
+FROM COSTCO_IMPORT T7
+UNION ALL
+SELECT DISTINCT T8.Email AS Email,
+                T8.FirstName AS First_Name,
+                T8.LastName AS Last_Name
+FROM EcommerceEmail_112023_ImportDE T8
+WHERE T8.LastName IN
+(
+    SELECT TOP 1 LastName
+    FROM EcommerceEmail_112023_ImportDE
+    WHERE Email = T8.Email
+)
+
+/*
+WHERE T8.Email NOT IN
+(
+'dwise@arklatexeyes.com',
+'email@sceyecare.net',
+'wlee@ebvc.com',
+'dralicecioara@gmail.com',
+'drlong2020@gmail.com',
+'drkjkulback@yahoo.com',
+'contacts@beacheyecare.com',
+'orders@theeyecenter.com',
+'jdipasquale@crhvision.com',
+'patients@cvcbrea.com',
+'tsaieye@hotmail.com',
+'ap@vancouereyecare.com',
+'raquon2321@yahoo.com',
+'info@broadvieweyecenter.com',
+'visionaryopticsnyc@gmail.com',
+'tsteward@progressiveeyecare.com'
+)
+*/

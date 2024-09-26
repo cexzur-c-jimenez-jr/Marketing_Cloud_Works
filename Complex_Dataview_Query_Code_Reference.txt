@@ -1,0 +1,61 @@
+SELECT /*S.SubscriberID AS SubscriberId,*/
+       S.SubscriberKey AS SubscriberKey,
+       J.EmailName AS EmailName,
+       CAST(S.EventDate AS DATE) AS [EmailSentDate],
+       JOU.JourneyName,
+       JOU.VersionNumber,
+       JOU.JourneyStatus,
+       COUNT(S.JobID) AS EmailsSent,
+       COUNT(O.JobID) AS [UniqueOpen],
+       COUNT(C.JobID) AS [UniqueClick],
+       COUNT(B.JobID) AS Bounced,
+       COUNT(U.JobID) AS Unsubscribed
+
+FROM _Job J 
+
+LEFT JOIN _Sent S ON J.JobID = S.JobID
+
+LEFT JOIN _Open o ON S.JobID = O.JobID
+      AND S.ListID = O.ListID
+      AND S.BatchID = O.BatchID
+      AND S.SubscriberID = O.SubscriberID
+      AND O.IsUnique = 1
+
+LEFT JOIN _Click c ON S.JobID = C.JobID
+      AND S.ListID = C.ListID
+      AND S.BatchID = C.BatchID
+      AND S.SubscriberID = C.SubscriberID
+      AND C.IsUnique = 1
+
+LEFT JOIN _Bounce B ON S.JobID = B.JobID
+      AND S.ListID = B.ListID
+      AND S.BatchID = B.BatchID
+      AND S.SubscriberID = B.SubscriberID
+      AND B.IsUnique = 1
+
+LEFT JOIN _Unsubscribe U ON S.JobID = U.JobID
+      AND S.ListID = U.ListID
+      AND S.BatchID = U.BatchID
+      AND S.SubscriberID = U.SubscriberID
+      AND U.IsUnique = 1
+
+LEFT JOIN _JourneyActivity JA ON J.TriggererSendDefinitionObjectID = JA.JourneyActivityObjectID
+LEFT JOIN _Journey JOU ON JA.VersionID = JOU.VersionID
+
+WHERE JOU.JourneyName = 'Vyzulta_Aware_Journey'
+  /*AND J.JobId IN ('294510', '294511')*/
+  AND JOU.VersionNumber = 3
+  AND J.EmailName = 'E11A_VYZSHIFT_1BRD'
+  /*AND S.EventDate > DateAdd(Day, -60, GetDate())*/
+
+GROUP BY /*S.SubscriberId,*/
+         S.SubscriberKey,
+         J.EmailName,
+         CAST(S.EventDate AS DATE),
+         JOU.JourneyName,
+         JOU.VersionNumber,
+         JOU.JourneyName,
+         JOU.VersionNumber,
+         JOU.JourneyStatus
+         
+HAVING COUNT(S.JobID) >= 1

@@ -1,0 +1,710 @@
+<!-- 
+@CreatedDate 26-10-2021
+@ModifiedDate 26-10-2021
+@Author Sayantani Banerjee-Accenture
+@LastModifiedBy Sayantani Banerjee-Accenture
+@Description This landing page serves the purpose of US Vision Care Speakers Program Preference Center form.
+It retrieves User Data by getting redirected by email and then updates the preferences
+and redirects the User to the Thank you page
+-->
+%%[
+set @pageUrl = RequestParameter('PageURL');
+set @isExistingUser="NO"
+set @custoId = QueryParameter("contactId")
+set @firstName=''
+set @lastName=''
+set @email=''
+IF NOT EMPTY(@custoId) THEN
+set @custoRows = LookupRows("VisionCare_MasterDE_SIT","Contact_ID",@custoId)
+set @custoRowCount = RowCount(@custoRows)
+IF @custoRowCount > 0 THEN
+set @isExistingUser = "YES"
+set @custoRow = Row(@custoRows,1)
+set @firstName = Field(@custoRow,"First_Name")
+set @lastName = Field(@custoRow,"Last_Name")
+set @email = Field(@custoRow,"Email")
+ELSE
+set @custoId = ''
+ENDIF
+ENDIF
+
+
+
+set @prefRows = LookupRows("Preference_Centre_DE_SIT2","Preference_Status",'True',"Preference_Form",'VisionCare_SpeakerProgram')
+set @prefRowCount = RowCount(@prefRows)
+
+
+]%%
+
+
+<script runat="server">
+  Platform.Load("core","1.1");
+  var fName = Request.GetFormField("fname");
+  var lName = Request.GetFormField("lname");
+  var email = Request.GetFormField("email");
+  var confirmEmail = Request.GetFormField("confirm-email");
+  var totalPrefCount = Request.GetFormField("totalPrefCount");
+  var contactId = Request.GetFormField("contactId");
+  var optinFormUrl = Request.GetFormField("pageurl");
+  var visionCareId="";
+  var masterContactId="";
+  var cignal = "";
+  var optin_created_Date=new Date();
+  var record_created_Date=new Date();
+  var updated_Date=new Date();
+  
+  if(fName!='' && fName!=null && lName!='' && lName!= null && email!='' && email!=null)
+  {
+    try{
+    var sharedMasterDERow = Platform.Function.LookupRows('ENT.Master_Data_Extension_SIT','Email',email.toLowerCase());
+    var visionCareMasterDERow = Platform.Function.LookupRows('VisionCare_MasterDE_SIT','Email',email.toLowerCase());
+      
+      if(visionCareMasterDERow==null||visionCareMasterDERow.length<1)
+      {
+        visionCareId=GUID();
+      }else if(visionCareMasterDERow != null && visionCareMasterDERow.length > 0){
+        visionCareId = visionCareMasterDERow[0].Contact_ID;
+        record_created_Date = visionCareMasterDERow[0].Created_Date;
+      }
+      
+      if(sharedMasterDERow==null||sharedMasterDERow.length<1)
+      {
+        masterContactId=visionCareId;
+      }else if(sharedMasterDERow != null && sharedMasterDERow.length > 0){
+        masterContactId = sharedMasterDERow[0].Contact_ID;
+      }
+      
+      
+      var custoPrefCaptureDeRowData = Platform.Function.LookupRows('Customer_Preference_Capture_SIT',"Contact_ID",visionCareId);
+     if(custoPrefCaptureDeRowData!=null && custoPrefCaptureDeRowData.length > 0)
+    {
+      optin_created_Date = custoPrefCaptureDeRowData[0].OptInCreated_Date;
+       
+    } 
+      
+      var blVision_Optin = 'True';
+      
+      var visioncareMasterDERowData = Platform.Function.LookupRows('VisionCare_MasterDE_SIT',"Contact_ID",visionCareId);
+    if(visioncareMasterDERowData!=null && visioncareMasterDERowData.length > 0)
+    {
+      blVision_Optin = visioncareMasterDERowData[0].BLVision_Optin;//fetching existing BLVision_Optin status
+      
+    }
+      
+      if(Request.GetFormField("list_1")=='True')//If blVision_Optin was False previously but user check the checkbox from this page
+      {
+        
+        blVision_Optin = 'True';
+      }
+      
+      var contactType="HCP";
+      var blPrivacyTermOptin = 'True';
+      var belongsToBLVision = 'True';
+      var bl_enterpriseOptin= 'True';
+     
+       Platform.Function.UpsertData("VisionCare_MasterDE_SIT",["Contact_ID"],[visionCareId],["Email","Confirm_Email","First_Name","Last_Name","Contact_Type","Created_Date","Modified_Date","BLVision_Optin","BelongstoBLVision","BLSpeaker_Programs_Optin"],[email.toLowerCase(),confirmEmail.toLowerCase(),fName,lName,contactType,record_created_Date,updated_Date,blVision_Optin,belongsToBLVision,Request.GetFormField("list_1")]);
+      
+      Platform.Function.UpsertData("ENT.Master_Data_Extension_SIT",["Contact_ID"],[masterContactId],["Email","Confirm_Email","First_Name","Last_Name","Created_Date","Modified_Date","VisionCare_Contact_ID","Contact_Type"],[email.toLowerCase(),confirmEmail.toLowerCase(),fName,lName,record_created_Date,updated_Date,visionCareId,contactType]);
+      
+     
+      Platform.Function.UpsertData("VisionCare_Corporate_Preference_DE_SIT",["Contact_ID"],[visionCareId],["BLEnterprise_Optin","BLPrivacyTerms_Optin","Email"],[bl_enterpriseOptin,blPrivacyTermOptin,email.toLowerCase()]);
+      
+     
+       Platform.Function.UpsertData("ENT.Corporate_Preference_DE_SIT",["Contact_ID"],[masterContactId],["BLEnterprise_Optin","BLPrivacyTerms_Optin","Email","VisionCare_Contact_ID"],[bl_enterpriseOptin,blPrivacyTermOptin,email.toLowerCase(),visionCareId]);
+      
+      
+      Platform.Function.UpsertData("ENT.Shared_Preference_Capture_DE_SIT",["Contact_ID"],[masterContactId],["BelongstoBLVision","BLSpeaker_Programs_Optin","BLVision_Optin","VisionCare_Contact_ID"],[belongsToBLVision,Request.GetFormField("list_1"),blVision_Optin,visionCareId]);
+      
+      var prefCaptureDE = "Customer_Preference_Capture_SIT";
+      var prefCaptureAuditDE = "Preference_Audit_Log_SIT";
+      var optinFormName = "VisionCare_SpeakerProgram";
+     
+      //Upsert Data into Customer_Preference_Capture DE
+      for(var i=1;i<=parseInt(totalPrefCount);i++)
+      {
+     Platform.Function.UpsertData(prefCaptureDE,["Contact_ID","Preference_ID"],[visionCareId,Request.GetFormField("prefId_"+i)],     ["Preference_Name","Preference_Status_OptIn","OptinCreated_Date","OptinModified_Date","OptIn_Form_PageURL","BLVision_Optin","OptIn_Form_Name","BelongstoBLVision"],[Request.GetFormField("prefName_"+i),Request.GetFormField("list_"+i),optin_created_Date,updated_Date,optinFormUrl,blVision_Optin,optinFormName,belongsToBLVision]);
+      }
+      
+      
+      //Upsert Data into Preference_Audit_Log DE
+      for(var i=1;i<=parseInt(totalPrefCount);i++)
+      {
+     
+    Platform.Function.UpsertData(prefCaptureAuditDE,["Contact_ID","Preference_ID","OptInCreated_Date"],[visionCareId,Request.GetFormField("prefId_"+i),new Date()],["Preference_Name_SFMC","Preference_Status_OptIn","OptInModified_Date","OptIn_Form_Name","OptIn_Form_PageURL","BLVision_Optin","BelongstoBLVision"],[Request.GetFormField("prefName_"+i),Request.GetFormField("list_"+i),updated_Date,optinFormName,optinFormUrl,blVision_Optin,belongsToBLVision]);
+        
+      }
+     
+      
+    cignal = "SUCCESS";
+    }//end of try
+    catch(err)
+    {
+      cignal = "ERROR";
+      Write("Error: "+err); 
+    }//end of catch
+    finally
+    {
+     
+      if(cignal=="SUCCESS")
+      {
+        //Write(" / "+cignal);
+       Redirect("https://cloud.marketing.bausch.com/BL-Preferences-Speaker-Program-Thank-You_SIT?contactId="+visionCareId,true);
+        
+      }
+    }
+    
+    
+    
+    
+  }//end of if(fName!='' && fName!=null && lName!='' && lName!= null && email!='' && email!=null)
+  
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Center US - Vision Care Speakers Program Preference Center</title>
+    <meta name="author" content>
+    <meta name="keywords" content content="">
+    <meta name="description" content content="">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- ebasaya -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+
+
+
+    <!-- Template CSS -->
+    <link href="https://na-ab19.marketo.com/rs/398-CQS-166/images/style-mkto.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,800,700,300" rel="stylesheet"
+        type="text/css">
+
+    <link href="https://cloud.marketing.bausch.com/BL-Preferences-Speaker-Program-CSS" rel="stylesheet" type="text/css">
+
+    <!-- <link href="style-surgical.css" rel="stylesheet" type="text/css"> -->
+
+    <script>
+
+        function checkBoxStatus(id) {
+
+            if (document.getElementById(id).checked == true) {
+                document.getElementById(id).value = "True";
+            } else {
+                document.getElementById(id).value = "False";
+            }
+
+        }
+
+        function subscribeAll() {
+
+            var totalPrefCount = document.getElementById("totalPrefCount").value;
+            for (var i = 1; i <= parseInt(totalPrefCount); i++) {
+                
+                    document.getElementById("list" + i).value = "True";
+                
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body data-spy="scroll" data-target=".navigation" id="bodyId">
+
+
+
+    <!-- Start Header -->
+    <div id="header" style="min-height:95px;">
+        <div style="display:block;">
+            <nav id="headerSection" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+
+                        <!-- Start Logo / Text -->
+                        <div id="logo-section-hcp-id"><img height="60"
+                                src="https://image.marketing.bausch.com/lib/fe2f117171640575711372/m/1/d74d0164-ccea-4739-82b6-d3c49c75209a.png"
+                                id="logo-img"></div>
+                        </a>
+                        <!-- ebasaya -->
+                        <!-- End Logo / Text -->
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- End Header -->
+
+    <!-- Banner -->
+    <div style="display:block;">
+        <div id="banner" class="bg-blur">
+            <div class="banner-content">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start Header Text -->
+                        <div class="col-md-12 col-sm-12">
+                            <div id="banner-text-id">
+                                <div class="text-center">
+                                    <h1><strong>Bausch + Lomb Vision Care Educational Preference Center</strong></h1>
+                                </div>
+                            </div>
+                            <!-- ebasaya -->
+                        </div>
+                    </div>
+                    <!-- End Header Text -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+
+
+
+
+
+    <!-- Section 2 -->
+    <!-- <div id="section2" style="display:block;">  -->
+    <div class="container pl-5 padding40 paddingbottom-15 ">
+
+        <div class="w-100 align-items-center justify-content-center">
+            <div class="row">
+
+
+
+                <form class="w-100" id="us-patient-form-id"
+                    action="" method="post">
+                    <input type="hidden" name="contactId" value="%%=v(@custoId)=%%"/>
+                    <input type="hidden" name="pageurl" value="%%=v(@pageUrl)=%%"/>
+                    <div class="row px-0 mr-5">
+                        <div class="col-md-6">
+                            <div class="form-group first">
+                                <label class="form-label" for="fname">First Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input name="fname" type="text" maxlength="100" class="form-control nameField"
+                                    placeholder="e.g. John" id="fname-id" value="%%=v(@firstName)=%%" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group first">
+                                <label class="form-label" for="lname">Last Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input name="lname" type="text" maxlength="100" class="form-control nameField"
+                                    placeholder="e.g. Smith" id="lname-id" value="%%=v(@lastName)=%%" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row px-0 mr-5">
+                        <div class="col-md-6">
+                            <div class="form-group first">
+                                <label class="form-label" for="email">Email
+                                    <span class="text-danger hide-span">*</span>
+                                </label>
+                                <input name="email" type="email" class="form-control"
+                                    placeholder="e.g. John@your-domain.com" id="email-id" value="%%=v(@email)=%%" onkeypress="removeSpaceOnKeyPress(event)" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group first">
+                                <label class="form-label" for="confirm-email">Confirm Email<span
+                                        class="text-danger hide-span">*</span></label>
+                                <input name="confirm-email" type="email" class="form-control"
+                                    placeholder="e.g. John@your-domain.com" id="confirm-email-id" value="%%=v(@email)=%%" onkeypress="removeSpaceOnKeyPress(event)" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- block1 -->
+                    <div class="mb-4 ">
+                        <div class="mb-2 pt-3 pb-1">
+                            <p class="mb-0 ml-2 pl-0  text-justify"> I would like to receive email communications for Bausch + Lomb: <u
+                                    style="cursor:pointer;" class="pl-1 allOptIn" id="selectAll"
+                                    onclick="subscribeAll();checkAll(this);">Select
+                                    All</u></p>
+                        </div>
+                        <div class="row mb-4 ">
+
+
+                            <div style="margin-left: 22px !important ; " class="  px-2 py-1 mx-3 w-100 mx-auto">
+                                <div class="col-lg-5 mb-lg-0 mb-3  pl-0">
+
+%%[
+    SET @index = 1 
+    SET @row = Row(@prefRows,@index)
+    SET @prefId = Field(@row,"Preference_ID")
+    SET @prefName = Field(@row,"Preference_Name_UI")
+    SET @prefNameSFMC = Field(@row,"Preference_Name_SFMC")
+    SET @checkboxValue = "True";
+    SET @rows = LookupRows("Customer_Preference_Capture_SIT","Contact_ID",@custoId,"Preference_ID",@prefId)
+    SET @rowCount = RowCount(@rows)
+
+        IF @rowCount > 0 THEN
+            SET @row = Row(@rows,@rowCount)
+            SET @checkboxValue = Field(@row,"Preference_Status_OptIn")
+        ENDIF
+]%%
+
+                                    <div class="form-check mb-2">
+                                        <input type="hidden" name="prefId_%%=v(@index)=%%" value="%%=v(@prefId)=%%"/>
+                                     <input type="hidden" name="prefName_%%=v(@index)=%%" value="%%=v(@prefNameSFMC)=%%"/>
+ %%[ IF @checkboxValue == True THEN ]%%
+                                        <input checked name="list_%%=v(@index)=%%" type="checkbox" class="form-check-input spec-chkbx"
+                                            id="list%%=v(@index)=%%" onclick="checkBoxStatus(this.id)" value="%%=v(@checkboxValue)=%%">
+                                %%[ELSE]%%
+                                     <input name="list_%%=v(@index)=%%" type="checkbox" class="form-check-input spec-chkbx"
+                                            id="list%%=v(@index)=%%" onclick="checkBoxStatus(this.id)" value="%%=v(@checkboxValue)=%%">
+                                     %%[ENDIF]%%
+                                        <label class="form-check-label" for="list[0]-id">%%=v(@prefName)=%%</label>
+                                    </div>                     
+                                
+                                  
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End block1 -->
+
+
+
+                    <div class="col-md-12 text-center pt-0 padding40">
+
+                        <p id="error-email" class="d-none mt-2 text-danger">Email and Confirm Email do not match.</p>
+                        <p id="error-email-domain" class="d-none mt-2 text-danger">Please provide a complete email
+                            address. ' ' is missing '.com' or '.net' or '.edu'.</p>
+                        <p id="error-email-dot" class="d-none mt-2 text-danger">Please provide only one '.' in the
+                            email
+                            address.</p>
+                        <p id="error-email-dot-1" class="d-none mt-2 text-danger">Please provide at least one '.' in the
+                            email
+                            address followed by valid domain extension.</p>
+                       <input type="hidden" name="totalPrefCount" id="totalPrefCount" value="%%=v(@prefRowCount)=%%" />
+
+                        <input style="background-color: #eeeeee; color: #666666;" id="submit-button-id" type="submit"
+                            style="background-color:#17a2b8" value="Submit"
+                            class="btn btn-md px-5 btn-primary rounded btn-outline-light mktoButton">&nbsp&nbsp&nbsp
+                        <input style="background-color: #eeeeee; color: #666666;" id="cancel-button-id" type="button"
+                            value="Reset" class="btn btn-md px-5 btn-secondary btn-outline-light rounded mktoButton">
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Code injected by live-server -->
+    <script type="text/javascript">
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+ // ]]>
+    </script>
+</body>
+
+<!-- Footer Bottom -->
+<!-- Footer Bottom -->
+<div id="footer-section-id" style="display:block;">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <p class="mktoText text-center " style="color: #ffffff; font-size: 10px;">
+                    By providing your information, you confirm to receive communications from Bausch + Lomb brands and
+                    products.
+                    By providing your information, you confirm that you have read and agree with the terms of our
+                    <a href="https://www.bauschhealth.com/privacy" target="_blank">Privacy Policy</a> and <a
+                        href="https://www.bauschhealth.com/terms" target="_blank">Legal Notice</a>. <br>
+                    CALIFORNIA RESIDENTS :
+                    <a href="http://cloud.marketing.bausch.com/california-privacy-optout" target="_blank">DO NOT SELL MY
+                        PERSONAL
+                        INFORMATION</a> |
+                    <a href="https://www.bauschhealth.com/about-us/contact-us" target="_blank">CONTACT US</a> |
+                    ©2021 Bausch
+                    Health Companies Inc. All rights reserved.
+
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- End Footer Bottom -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<script>
+    // if ('block' == 'none') {
+    //       document.getElementById('main-content').style.setProperty('width','100%','important')
+    //     } else {}
+    /*
+isPageOpen is the flag which represents user has landed on this page from email or from browser typing.
+If user has landed on it by email , then email and confirm email will be readonly and they will no longer be
+required field. So '*' symbol span will be hidden for them.
+*/
+%%[IF @isExistingUser == "YES" THEN]%%
+    $(document).ready(function () {
+                $('input[type=email]').prop("readonly", true);
+                $('.hide-span').hide();
+            });
+    %%[ENDIF]%%
+
+    /*
+   If user clicks on the select All hyperlink all of the checkboxes will be checked
+   */
+    $("#selectAll").on("click", function () {
+        $("input[type=checkbox]").prop("checked", true);
+    });
+
+    // function checkAll(e){
+    //     $(e).parent().parent().siblings().find("input[type=checkbox]").prop("checked",true);
+    // }
+
+
+    /*     If user clicks on reset then whole form will go to the original setting except for the opt ins.
+ They will be all checked. */
+    jQuery("#cancel-button-id").on("click", function () {
+        jQuery('#us-patient-form-id').trigger("reset");
+        $('input[type=checkbox]').prop("checked", true);
+
+    });
+
+    /*
+  First Name , Last Name will contain validations as follows 
+  -Won't allow any special characters,numbers,space
+  -First Letter will be in upper case and rest of them should be in lower case
+  */
+    jQuery(".nameField").on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
+    $(function () {
+
+        $(".nameField").bind('paste', function () {
+            setTimeout(function () {
+                var fnameWithSpecialChar = $('#fname-id').val();
+                var fnameWithoutSpecialChar = fnameWithSpecialChar.replace(/[^a-zA-Z]/g, '');
+                $('#fname-id').val(fnameWithoutSpecialChar);
+
+                var lnameWithSpecialChar = $('#lname-id').val();
+                var lnameWithoutSpecialChar = lnameWithSpecialChar.replace(/[^a-zA-Z]/g, '');
+                $('#lname-id').val(lnameWithoutSpecialChar);
+
+            });
+
+        });
+    });
+    jQuery(".nameField").on('keyup keydown', function (event) {
+        if ($("#fname-id").val() !== "") {
+            $("#fname-id").val($("#fname-id").val()[0].toUpperCase() + $("#fname-id").val().substring(1).toLowerCase());
+        }
+
+        if ($("#lname-id").val() !== "") {
+            $("#lname-id").val($("#lname-id").val()[0].toUpperCase() + $("#lname-id").val().substring(1).toLowerCase());
+        }
+    });
+
+    jQuery("#email-id").on('click keydown', function (event) {
+
+        $("#email-id").removeClass('focusedInput');
+
+    });
+
+    jQuery("#confirm-email-id").on('click keydown', function (event) {
+
+        $("#confirm-email-id").removeClass('focusedInput');
+
+    });
+
+    /* Following code will check the validations on form submit:
+  - Email and Confirm Email are same or not
+  - Email and Confirm Emails are having invalid domain extensions or not
+  - Email and Confirm Email are having multiple '.' symbol after @ or not
+  */
+   function removeSpaceOnKeyPress(evt) {
+              var theEvent = evt || window.event;
+
+              // Handle paste
+              if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+              } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+              }
+
+              var regex = /[^\s\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+/g;
+              if (!regex.test(key)) {
+                //   console.log(`${val.value} match`);
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault)
+                  theEvent.preventDefault();
+              }
+            }
+
+          $('input[type=email]').bind('paste', function () {
+              setTimeout(function () {
+                let fnameWithSpecialChar = $('#email-id').val();
+                let fnameWithoutSpecialChar = fnameWithSpecialChar.replace(/[\s\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+/g, '');
+
+
+                $('#email-id').val(fnameWithoutSpecialChar);
+                
+                  let email2 = $('#confirm-email-id').val();
+                let email2_1 = email2.replace(/[\s\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+/g, '');
+
+
+                $('#confirm-email-id').val(email2_1);
+
+              });
+
+            });
+    jQuery("#us-patient-form-id").submit(function (e) {
+        var out = true;
+        //validation for email id further check
+
+        $('input[type=email]').each(function (event) {
+            console.log($(this).val());
+
+            if ($(this).val().includes("@")) {
+                let domain = ["com", "net", "org", "co", "us", "int", "mil", "edu", "gov", "biz", "info", "mobi", "ly", "tel"];
+                console.log("hi");
+                let arr = $(this).val().split("@");
+                console.log(arr);
+                if (arr.length === 2) {
+                    console.log("fine");
+                    if (arr[1].includes(".")) {
+                        arr = arr[1].split(".");
+                        console.log(arr);
+                        if (arr.length > 0) {
+                            console.log("still fine");
+                          /*  arr[1];
+                            if (domain.indexOf(arr[1]) === -1) {
+                                console.log("domain does not exist");
+                                error('error-email-domain', this);
+                                out = false;
+                                return false;
+
+
+                            } else {
+                                console.log("domain is fine");
+                                //checking for email and confirm email
+                                out = true;
+
+                                //done checking for email and confirm email
+                            }
+                            */
+                        } else {
+                            console.log(" `.` should be entered only once");
+
+                            error('error-email-dot', this);
+                            out = false;
+                            return false;
+                        }
+                    } else {
+                        console.log(" `.` should be entered atlest once");
+                        error('error-email-dot-1', this);
+                        out = false;
+                        return false;
+                    }
+                } else {
+                    console.log(" `@` should be entered only once");
+                    out = false;
+                    return false;
+                }
+            }
+
+        });
+
+        if (out) {
+            if ($('#email-id').val() !== $('#confirm-email-id').val()) {
+
+                $('input[type=email]').addClass('focusedInput');
+                $('#error-email').removeClass('d-none');
+
+                setTimeout(function () {
+                    $('input[type=email]').removeClass('focusedInput');
+                    $('#error-email').addClass('d-none');
+                }, 5000);
+
+
+                out = false;
+                return false;
+            } else {
+                out = true;
+
+            }
+        }
+        return out;
+    });
+
+    function error(errorType, selector) {
+        $('#' + errorType).removeClass('d-none');
+        $(selector).addClass('focusedInput');
+
+
+        setTimeout(function () {
+            $('#' + errorType).addClass('d-none');
+            $(selector).removeClass('focusedInput');
+        }, 5000);
+
+    }
+
+</script>
+<!-- ebasaya -->
+
+</html>

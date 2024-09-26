@@ -1,0 +1,714 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"> 
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.cdnfonts.com/css/nobel" rel="stylesheet">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type="text/css">
+      @import url('https://fonts.cdnfonts.com/css/nobel');
+      ReadMsgBody{ width: 100%;}
+      .ExternalClass {width: 100%;}
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+      body {-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;margin:0 !important; font-family: 'Nobel', sans-serif;}
+      p { margin: 1em 0;}
+      table td { border-collapse: collapse;}
+      img {outline:0;}
+      a img {border:none;}
+      @-ms-viewport{ width: device-width;}
+      .linkstyle {
+          text-decoration:underline;
+      }
+       .linkstyle:hover {
+          text-decoration:none;
+      }
+      .img logo {
+        text-align: center !important;
+        height: 32px !important;
+        width: 320px !important;
+      }
+      .button {
+
+        display: inline-block !important;
+        background-color: #00AEB3 !important;
+        color: #fff !important;
+        font-size: 23px !important;
+        font-weight: 700 !important;
+        padding: 18px 48px 20px 48px !important;
+        border-radius: 65px !important;
+        margin-bottom: 20px !important; 
+        text-decoration:none !important;
+        }
+
+        .coupon-wrapper {
+            max-width: 550px; !important;
+            margin-left: auto; !important;
+            margin-right: auto; !important;
+            background: #17387C; !important;
+            text-align: center; !important;
+            padding: 10px; !important;
+            margin-bottom: 50px;!important;
+        }
+       .coupon-wrapper * {
+            color: white; !important;
+        }
+
+        .coupon-inner {
+            border: 2px dashed white; !important;
+            padding: 40px 30px; !important;
+        }
+      .c-title {
+            font-size: 36px; !important;
+            margin-bottom: 15px; !important;
+        }
+
+        .c-text {
+            font-size: 22px; !important;
+            margin-bottom: 20px; !important;
+        }
+      .burst {
+            width: 80px; !important;
+            margin-left: auto; !important;
+            display: block; !important;
+            margin: 50px 30px -40px auto; !important;
+        }
+
+      .img {
+        width: 220px !important;
+      }
+      a{
+          text-decoration: none !important;
+      }
+      a:hover{
+          text-decoration: underline !important;
+      }
+      img {
+         image-rendering: -webkit-optimize-contrast;
+         max-width: 100%;
+      }
+      .background_td {
+        background-image: url(https://image.eum.bausch.com/lib/fe39117175640478751077/m/1/fed69313-0f0f-48a8-8d57-28d0008c3b9d.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color:#cccccc; 
+      }
+    </style>
+    <style type="text/css">
+      @media only screen and (max-width: 599px) {
+        .container {width: 100% !important;}
+        .footer { width:auto !important; margin-left:0; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        img { max-width:100% !important; height:auto !important; max-height:auto !important;}
+        .header img{max-width:100% !important;height:auto !important; max-height:auto !important;}
+        .photo img { width:100% !important; max-width:100% !important; height:auto !important;}
+        .drop { display:block !important; width: 100% !important; float:left; clear:both;}
+        .footerlogo { display:block !important; width: 100% !important; padding-top:15px; float:left; clear:both;}
+        .nav4, .nav5, .nav6 { display: none !important; }
+        .tableBlock {width:100% !important;}
+        .responsive-td {width:100% !important; display:block !important; padding:0 !important; }
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+    
+         table tr td .save {
+                    display: none !important;
+                }
+        table tr td .text {
+                    padding:13px !important;
+                }
+        table tr td.rowhide{
+        display: none !important;
+        }
+        table.grid tbody tr td img {
+            width: 100%; !important;
+            display: block; !important;
+            border-radius: 16px 16px 0 0; !important;
+        }
+        .text1{
+        padding: 40px 20px 20px 20px !important;
+        }
+        .footer{
+          padding:50px 30px !important;
+        }
+        table tr td.blpadding{
+        padding-top: 30px !important;
+        }
+        table tr td.blockpadd{
+        padding: 0px 0px 0px 30px !important;
+        }
+        table tr td.blockpadd1{
+        padding: 0px 20px 0px 20px !important;
+        }
+        .desktop{
+        mso-hide: all !important;
+          display: none !important;
+          overflow: hidden !important;
+          visibility: hidden !important;
+          height: 0px !important;
+        }
+        .mobile{
+          mso-hide: none !important;
+        display: block !important;
+          overflow: visible !important;
+          visibility: visible !important;
+          height: auto !important;
+        }
+        
+        .reg_conf_textbox{
+          width: 290px !important;
+        }
+        reg_conf_textbox_outlook{
+          width: 21em !important; 
+        }
+        
+        /* MOBILE GLOBAL STYLES - DO NOT CHANGE */
+        body { padding: 0px !important; font-size: 16px !important; line-height: 150% !important;}
+        h1 { font-size: 22px !important; line-height: normal !important;}
+        h2 { font-size: 20px !important; line-height: normal !important;}
+        h3 { font-size: 18px !important; line-height: normal !important;}
+        .buttonstyles {
+          font-family:'Nobel', sans-serif; !important;
+          font-size: 16px !important;
+          color: #FFFFFF !important;
+          padding: 10px !important;
+        }
+        /* END OF MOBILE GLOBAL STYLES - DO NOT CHANGE */
+      }
+  
+      @media only screen and (max-width: 600px) {
+        .container { width:100% !important; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        .photo img { width:100% !important; height:auto !important;}
+        .nav5, .nav6 { display: none !important;}
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+      }
+   
+      @media (prefers-color-scheme: dark) {
+        .p_dark{
+          color: #3d3d3d !important;
+        }
+      }
+    </style>
+    <!--[if mso]>
+      <style type="text/css">
+          /* Begin Outlook Font Fix */
+          body, table, td {
+              font-family: 'Nobel', sans-serif; ;
+              font-size:16px;
+              color:#000000;
+              line-height:1;
+          }
+          /* End Outlook Font Fix */
+      </style>
+    <![endif]-->
+  </head>
+  <body bgcolor="#ffffff" text="#000000" style="text-align:center; background-color: #ffffff; color: #000000; padding: 0px; -webkit-text-size-adjust:none; font-size: 16px; font-family:'Nobel', sans-serif;">
+    <!--<div style="font-size:0; line-height:0;"><custom name="opencounter" type="tracking"/><custom name="usermatch" type="tracking"/></div>-->
+    <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" role="presentation" class="table-main table-1" style="margin:0 auto; width:700px; background-color:#fff; text-align:center;">
+      <tr>
+        <td align="center" valign="top" style="text-align:center;">
+          <custom type="header"/>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <table cellspacing="0" cellpadding="0" border="0" width="700" class="container" align="center" style="text-align:center;">
+            <tr>
+              <td>
+                <table class="tb_properties border_style" style="background-color:#FFFFFF;" cellspacing="0" cellpadding="0" bgcolor="#ffffff" width="100%">
+                  <tr>
+                    <td align="center" valign="top">
+                      <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <!-- added padding here -->
+                          <td class="content_padding" style="">
+                            <!-- end of comment -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                              <tr> <!-- top slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                          <td align="left" valign="top">
+                                            <table cellspacing="0" cellpadding="0" style="width:100%">
+                                              <tbody>
+                                              <tr>
+                                                <td class="responsive-td" valign="top" style="width: 100%;">
+                                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;">%%[
+
+SET @EmailAddress = AttributeValue('EmailAddress')
+SET @First_Name = AttributeValue('First_Name')
+SET @Last_Name = AttributeValue('Last_Name')
+SET @Title = AttributeValue('Title')
+SET @Salutation = AttributeValue('Salutation')
+
+SET @Privacy_Notice_Country = AttributeValue('Country')
+SET @Country = AttributeValue('Country')
+
+SET @Email = AttributeValue('Email')
+SET @Salutation_All = AttributeValue('salutation_all')
+SET @SetID = AttributeValue('SETID')
+
+SET @Complete_Salutation = AttributeValue('Complete_Salutation')
+SET @Alternative_Complete_Salutation = AttributeValue('Alternative_Complete_Salutation')
+
+IF (@SetId != '' OR Length(@SetId) > 0) THEN
+
+IF @SetId == 'AUSTR' THEN
+SET @Privacy_Notice_Country = 'Austria'
+SET @Country = 'Austria'
+
+ELSEIF @SetId == 'DMBLV' THEN
+SET @Privacy_Notice_Country = 'Germany'
+SET @Country = 'Germany'
+
+ELSEIF @SetId == 'SWICM' THEN
+SET @Privacy_Notice_Country = 'Switzerland'
+SET @Country = 'Switzerland'
+
+ENDIF
+ENDIF
+
+IF (@Salutation_All != '' OR Length(@Salutation_All) > 0) THEN
+
+IF (@Country == 'Austria' OR @Country == 'Germany' OR @Country == 'Switzerland') THEN
+SET @Final_Salutation = @Salutation_All
+ENDIF
+
+ELSE
+SET @Final_Salutation = @Complete_Salutation
+
+ENDIF
+
+]%%<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+<td width="700" style="background-color: #fff;padding: 25px;text-align: center; width:700px;">
+                 <a href="#">
+                    <img src="https://image.eum.bausch.com/lib/fe3c117175640478751074/m/1/6bbe7a05-0083-4f15-8b09-6592b86ec2eb.png" alt="Bausch + Lomb logo" style="width: 700px; color: #000000; font-family:'Nobel', sans-serif; font-size: 12px;font-weight: 400; text-align:center;" width="700">
+                    </a>
+                 </td>
+</tr>
+</table></td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+<td width="700" style="padding: 25px;text-align: center; width:700px;">
+                               <img src="https://image.eum.bausch.com/lib/fe3c117175640478751074/m/1/d8776c9f-cc89-448b-aa7f-d63889f96892.png" width="700" alt="Bausch + Lomb health service scenario" style="width:700px; color: #000000; font-family:'Nobel', sans-serif; font-size: 12px;font-weight: 400; text-align:center;">
+</td>
+</tr>
+</table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;">%%[
+SET @Header_DE = 'DOI_UPDATED_Request_Optin_Header_PROD'
+SET @Header_Rows = LookupRows(@Header_DE, 'Country', @Country)
+SET @Header_RowCount = RowCount(@Header_Rows)
+SET @Header_Row = ROW(@Header_Rows,1)
+IF @Header_RowCount <= 0 THEN
+RaiseError('No entry found in DE for given email.')
+
+ELSE
+SET @Header_Count = Field(@Header_Row, 'Header_Lines')
+SET @Subject = Field(@Header_Row, 'Subject')
+SET @Preheader = Field(@Header_Row, 'Preheader')
+SET @Header_Line_1 = Field(@Header_Row, 'Header_Line_1')
+SET @Header_Line_2 = Field(@Header_Row, 'Header_Line_2')
+SET @Header_Line_3 = Field(@Header_Row, 'Header_Line_3')
+SET @Header_Line_4 = Field(@Header_Row, 'Header_Line_4')
+SET @Header_Line_5 = Field(@Header_Row, 'Header_Line_5')
+SET @Header_Line_6 = Field(@Header_Row, 'Header_Line_6')
+SET @Header_Line_7 = Field(@Header_Row, 'Header_Line_7')
+SET @Header_Line_8 = Field(@Header_Row, 'Header_Line_8')
+SET @Header_Line_9 = Field(@Header_Row, 'Header_Line_9')
+SET @Header_Line_10 = Field(@Header_Row, 'Header_Line_10')
+
+ENDIF
+]%%<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center"> 
+                            <tr>
+                           <td style="text-align: center;font-size: 30px;color: #00aeb3;font-weight: 900;line-height: 45px;padding-bottom: 20px;padding-top: 20px;">
+                                %%=v(@Header_Line_1)=%%
+                            </td>
+                        </tr>
+</table></td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;">%%[
+SET @Body_DE = 'DOI_UPDATED_Request_Optin_Body_PROD'
+SET @Body_Rows = LookupRows(@Body_DE, 'Country', @Country)
+SET @Body_RowCount = RowCount(@Body_Rows)
+SET @Body_Row = ROW(@Body_Rows,1)
+IF @Body_RowCount <= 0 THEN
+RaiseError('No entry found in DE for given email.')
+
+ELSE
+SET @Body_Count = Field(@Body_Row, 'Body_Lines')
+SET @Body_Line_1 = Field(@Body_Row, 'Body_Line_1')
+SET @Body_Line_2 = Field(@Body_Row, 'Body_Line_2')
+SET @Body_Line_3 = Field(@Body_Row, 'Body_Line_3')
+SET @Body_Line_4 = Field(@Body_Row, 'Body_Line_4')
+SET @Body_Line_5 = Field(@Body_Row, 'Body_Line_5')
+SET @Body_Line_6 = Field(@Body_Row, 'Body_Line_6')
+SET @Body_Line_7 = Field(@Body_Row, 'Body_Line_7')
+SET @Body_Line_8 = Field(@Body_Row, 'Body_Line_8')
+SET @Body_Line_9 = Field(@Body_Row, 'Body_Line_9')
+SET @Body_Line_10 = Field(@Body_Row, 'Body_Line_10')
+SET @Body_Link_1 = Field(@Body_Row, 'Body_Link_1')
+
+ENDIF
+]%%<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!--<table width="700" align="center">
+<tr>
+                            <td width="700" style="text-align: center; color: #939393; font-size: 21px; font-weight: 600; font-family:'Nobel', sans-serif; padding-bottom: 10px; width:700px;">
+                              %%=v(Concat(@Salutation, ','))=%%
+                            </td>
+                        </tr>
+</table>--></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px 10px 0px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">%%[IF (@Country == 'Austria' OR @Country == 'Germany' OR @Country == 'Switzerland') THEN]%%
+<table width="700" align="center">
+<tr>
+                            <td width="700" style="text-align: center; color: #939393;font-size: 21px;font-weight: 700;padding: 10px 40px 20px 40px; width:700px;">
+                           %%[IF (@Country == 'Austria' OR @Country == 'Germany') THEN]%%
+    %%=v(Concat(@Final_Salutation, ' ', Propercase(@Last_Name), ','))=%%
+  %%[ELSE]%%
+    %%=v(Concat(@Final_Salutation, ' ', Propercase(@Last_Name)))=%%
+  %%[ENDIF]%%
+                            </td>
+                        </tr>
+</table>
+%%[ENDIF]%%</td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+                            <td style="text-align: center; color: #939393; font-size: 21px;font-weight: 200; padding: 10px 40px 10px 40px;">
+  %%[IF (@Country == 'Austria' OR @Country == 'Germany') THEN]%%
+  %%=v(Concat(Lowercase(Substring(@Body_Line_2,1,1)),Substring(@Body_Line_2,2,Subtract(Length(@Body_Line_2),1))))=%%
+%%[ELSE]%%
+  %%=v(@Body_Line_2)=%%
+%%[ENDIF]%%
+                            </td>
+                        </tr>
+</table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+                            <td style="text-align:center; color: #939393;font-size: 19px; font-weight:200; padding: 10px 40px 10px 40px;">
+                               %%=v(@Body_Line_3)=%%
+                            </td>
+                        </tr>
+</table></td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+                            <td style="text-align:center; color: #939393; font-size:19px; font-weight:200; padding: 10px 40px 10px 40px;">
+                               %%=v(@Body_Line_4)=%%
+                            </td>
+                        </tr>
+</table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+                            <td style="text-align:center; color: #939393; font-size:19px; font-weight:200; padding: 10px 40px 10px 40px;">
+                               %%=v(@Body_Line_5)=%%
+                            </td>
+                        </tr>
+</table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center" style="text-align: center;">
+<tr>
+                            <td width="700">
+                                <table width="700" style="text-align: center;">
+                            <tr>
+                            <td width="700">
+                              <br>
+                              <!--[if mso]>
+                              <a:roundrect xmlns:a="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%%=RedirectTo(CONCAT(CloudPagesURL(888)))=%%" fillcolor="#00aeb3" arcsize="50%" style="v-text-anchor:middle;width:230pt;height:45pt;" stroke="f"><w:anchorlock/><a:textbox inset="0,0,0,0" color="#ffffff">
+        <center style="color:#ffffff; font-family:'Nobel', sans-serif; font-size:20px; font-weight:700;">%%=v(@Body_Line_6)=%%
+                              </center>
+                              </a:textbox>
+                              </a:roundrect>
+                              <![endif]-->
+                              <!--[if !mso]>-->
+         
+         <a href="%%=RedirectTo(CONCAT(CloudPagesURL(888)))=%%" style="background-color: #00aeb3;display: inline-block;color: #fff;font-size: 20px;font-weight: bold;padding: 23px 60px;border-radius: 65px;margin-top: 0px;margin-bottom: 20px;text-decoration: none;">%%=v(@Body_Line_6)=%%</a>
+                            <!--<![endif]-->
+                            </td>                     
+                        </tr>            
+                                </table>           
+                            </td>
+                        </tr>
+  </table></td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center">
+<tr>
+                            <td style="text-align: center;color: #939393;font-size: 21px;font-weight: 400;padding: 10px 40px 20px 40px;">
+                              %%=v(@Body_Line_7)=%% <a style="color: #939393;" href="%%=RedirectTo(CONCAT(CloudPagesURL(888)))=%%"><u>www.eum.bausch.com</u></a>
+                            </td>
+                        </tr>
+</table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-bottom: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="700" align="center" style="text-align:center;">
+<tr>
+                            <td style="text-align:center;">
+                                <hr style="border: 2px solid #939393; margin-bottom: 29px; display:block !important;">
+                            </td>
+                        </tr>
+</table></td></tr></table>%%[
+SET @Privacy_Notice_DE = 'Country_Privacy_URL_Mapping_PROD'
+SET @Default_Contact_Number = '(33) 4 67 12 30 30'
+SET @Privacy_URL = Lookup(@Privacy_Notice_DE, 'PrivacyURL', 'Country_Name', @Privacy_Notice_Country)
+SET @Legal_Entity = Lookup(@Privacy_Notice_DE, 'Legal_Entity', 'Country_Name', @Privacy_Notice_Country)
+SET @Legal_Entity_Address = Lookup(@Privacy_Notice_DE, 'Address', 'Country_Name', @Privacy_Notice_Country)
+SET @Legal_Entity_Contact_Number = Lookup(@Privacy_Notice_DE, 'Contact_Number', 'Country_Name', @Privacy_Notice_Country)
+
+IF IsNull(@Legal_Entity_Contact_Number) OR Empty(@Legal_Entity_Contact_Number) OR @Legal_Entity_Contact_Number == '' THEN
+SET @Legal_Entity_Contact_Number = @Default_Contact_Number
+ENDIF
+]%%<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table align="center" border="0" cellpadding="0" cellspacing="0" style="text-align:center;" width="700">
+ 
+  <tr>
+   <td>
+    %%[IF (@Privacy_Notice_Country == 'Austria') THEN]%%<p style="text-align: center;color: #939393; font-size: 17px;font-weight: 100 !important;padding: 10px 40px 20px 40px;font-style: italic;padding-bottom: 49px;">
+     Indem Sie Ihre Daten &uuml;bermitteln, haben Sie die Bedingungen unserer <a href="%%=RedirectTo(@Privacy_URL)=%%" style="text-align: center;color: #939393;;font-size: 17px;font-weight: 100 !important;font-style:italic;">Datenschutzrichtlinie</a> gelesen und stimmen diesen zu. Sie erkl&auml;ren sich damit einverstanden, Marketingmitteilungen und Newsletter zu Produkten und Dienstleistungen zu erhalten. Sie k&ouml;nnen Ihre Zustimmung jederzeit in Ihrem pers&ouml;nlichen Preference Center widerrufen oder bearbeiten, in welches Sie &uuml;ber jede von uns erhaltene E-Mail gelangen.</p>%%[ELSEIF (@Privacy_Notice_Country == 'Germany') THEN]%%<p style="text-align: center;color: #939393; font-size: 17px;font-weight: 100 !important;padding: 10px 40px 20px 40px;font-style: italic;padding-bottom: 49px;">
+     Indem Sie Ihre Daten &uuml;bermitteln, haben Sie die Bedingungen unserer <a href="%%=RedirectTo(@Privacy_URL)=%%" style="text-align: center;color: #939393; font-size: 18px;font-weight: 100 !important;font-style:italic;">Datenschutzrichtlinie</a> gelesen und stimmen diesen zu. Sie erkl&auml;ren sich damit einverstanden, Marketingmitteilungen und Newsletter zu Produkten und Dienstleistungen zu erhalten. Sie k&ouml;nnen Ihre Zustimmung jederzeit in Ihrem pers&ouml;nlichen Preference Center widerrufen oder bearbeiten, in welches Sie &uuml;ber jede von uns erhaltene E-Mail gelangen.</p>%%[ELSEIF (@Privacy_Notice_Country == 'Switzerland') THEN]%%<p style="text-align: center;color: #939393; font-size: 17px;font-weight: 100 !important;padding: 10px 40px 20px 40px;font-style: italic;padding-bottom: 49px;">
+     Indem Sie Ihre Daten &uuml;bermitteln, haben Sie die Bedingungen unserer <a href="%%=RedirectTo(@Privacy_URL)=%%" style="text-align: center;color: #939393; font-size: 18px;font-weight: 100 !important;font-style:italic;">Datenschutzrichtlinie</a> gelesen und stimmen diesen zu. Sie erkl&auml;ren sich damit einverstanden, Marketingmitteilungen und Newsletter zu Produkten und Dienstleistungen zu erhalten. Sie k&ouml;nnen Ihre Zustimmung jederzeit in Ihrem pers&ouml;nlichen Preference Center widerrufen oder bearbeiten, in welches Sie &uuml;ber jede von uns erhaltene E-Mail gelangen.</p> %%[ENDIF]%%</td></tr></table></td></tr></table></td></tr></table></td></tr><tr><td><table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%; padding-top: 3px;">%%[
+SET @Footer_DE = 'DOI_UPDATED_Request_Optin_Footer_PROD'
+SET @Footer_Rows = LookupRows(@Footer_DE, 'Country', @Country)
+SET @Footer_RowCount = RowCount(@Footer_Rows)
+SET @Footer_Row = ROW(@Footer_Rows,1)
+IF @Footer_RowCount <= 0 THEN
+RaiseError('No entry found in DE for given email.')
+
+ELSE
+SET @Footer_Count = Field(@Footer_Row, 'Footer_Lines')
+SET @Footer_Line_1 = Field(@Footer_Row, 'Footer_Line_1')
+SET @Footer_Line_2 = Field(@Footer_Row, 'Footer_Line_2')
+SET @Footer_Line_3 = Field(@Footer_Row, 'Footer_Line_3')
+SET @Footer_Line_4 = Field(@Footer_Row, 'Footer_Line_4')
+SET @Footer_Line_5 = Field(@Footer_Row, 'Footer_Line_5')
+SET @Footer_Line_6 = Field(@Footer_Row, 'Footer_Line_6')
+SET @Footer_Line_7 = Field(@Footer_Row, 'Footer_Line_7')
+SET @Footer_Line_8 = Field(@Footer_Row, 'Footer_Line_8')
+SET @Footer_Line_9 = Field(@Footer_Row, 'Footer_Line_9')
+SET @Footer_Line_10 = Field(@Footer_Row, 'Footer_Line_10')
+SET @Footer_Link_1 = Field(@Footer_Row, 'Footer_Link_1')
+SET @Footer_Link_2 = Field(@Footer_Row, 'Footer_Link_2')
+SET @Footer_Link_3 = Field(@Footer_Row, 'Footer_Link_3')
+SET @Footer_Link_4 = Field(@Footer_Row, 'Footer_Link_4')
+
+ENDIF
+
+SET @Unsubscribe_Link_Text = 'https://cloud.eum.bausch.com/hcp-preference-center_sit?contactId='
+SET @Footer_Link_3 = @Privacy_URL
+SET @Footer_Link_4 = Concat(@Unsubscribe_Link_Text,@Preference_ContactID)
+]%%<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><table align="center" style="background-color: #f1f1f1;" width="700">
+ 
+  <tr>
+    <td width="700" style="padding: 25px;text-align: center; width:700px;">
+    <br>
+    <br>
+    <a href="%%=RedirectTo(@Footer_Link_1)=%%" style="width: 42px;display: inline-block;"><img alt="Globe logo" src="https://image.eum.bausch.com/lib/fe39117175640478751077/m/1/ede14021-09e1-42b8-9455-81bfd8d04ef4.png" style="color: #000000;font-size: 12px;font-weight: 400;text-align:center" width="42"></a> <a href="%%=RedirectTo(@Footer_Link_2)=%%" style="width: 42px;display: inline-block;"><img alt="LinkedIn logo" src="https://image.eum.bausch.com/lib/fe39117175640478751077/m/1/6fd37171-1aa5-4c77-a682-77adc785834b.png" style="color: #000000;font-size: 12px;font-weight: 400;text-align:center" width="42"></a>
+    </td>
+  </tr>
+  <tr>
+   <td style="color: #939393;font-size: 17px;padding-top: 15px;font-weight: 400;text-align:center">
+    %%=v(@Legal_Entity)=%%
+    </td>
+  </tr>
+  <tr>
+   <td style="color: #939393;font-size: 17px;padding-top: 5px;font-weight: 400;text-align:center">
+    %%=v(@Legal_Entity_Address)=%%
+    </td>
+  </tr>
+  <tr>
+   <td style="color: #939393;font-size: 17px;font-weight: 400;padding: 25px 25px 25px 25px; text-align:center">
+    %%=v(Concat(@Footer_Line_3, ' ', @Legal_Entity_Contact_Number, '.'))=%%
+    </td>
+  </tr>
+  <tr style="text-align: center; ">
+   <td>
+     <a href="%%=RedirectTo(@Privacy_URL)=%%" style="color: #939393; font-size: 17px;font-weight: 400;padding: 0px 15px 0px 15px;display: inline-block;text-decoration: underline;"><u>%%=v(@Footer_Line_4)=%%</u></a><br>
+    <br>
+    &nbsp;
+    </td>
+  </tr>
+  <tr>
+   <td style="text-align:center; padding-bottom:40px; width:700px;">
+    %%[ SET @Footer_Logo_Link = 'https://image.eum.bausch.com/lib/fe39117175640478751077/m/1/aa152e3d-e17f-4f93-9f8c-0fd813542e37.png' IF @Country == 'Austria' OR @Country == 'Germany' OR @Country == 'Switzerland' THEN SET @Footer_Logo_Link = 'https://image.eum.bausch.com/lib/fe3c117175640478751074/m/1/6c963907-eb1e-4346-bc7d-7c0eb8cf9f73.png' ENDIF ]%% <img alt="Bausch + Lomb brand line" src="%%=v(@Footer_Logo_Link)=%%" style="color: #000000;font-size: 12px;font-weight: 400; text-align:center" width="420">
+    </td>
+  </tr>
+</table></td></tr></table></td></tr></table></td></tr></table></td></tr></table>
+                                                </td>
+                                              </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              
+                              <tr> <!-- bottom 1 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 2 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 3 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 4 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 5 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 6 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr> <!-- bottom 7 slot -->
+                                <td align="center" class="header" valign="top">
+                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="left" valign="top">
+                                        <table cellspacing="0" cellpadding="0" style="width:100%">
+                                          <tbody>
+                                          <tr>
+                                            <td class="responsive-td" valign="top" style="width: 100%;">
+                                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling mobile-hidden"><tr><td style="padding: 0px; " class="slot-styling mobile-hidden camarker-inner"></td></tr></table>
+                                            </td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+          <custom type="footer" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
